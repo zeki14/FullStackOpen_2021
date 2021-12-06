@@ -1,0 +1,20 @@
+SPA aplicattion create new note
+
+note over browser:
+user creates a note  and hit the submit button
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over server:
+new note created in the server. Content-type: aplication/json
+end note
+note over server:
+Server doesn´t redirect 
+end note
+
+
+server-->browser: HTTP code 201 new note created
+note over browser:
+Browser doesn´t  make any other  HTTP request, and stay on the url
+end note
