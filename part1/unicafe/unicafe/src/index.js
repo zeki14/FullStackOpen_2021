@@ -12,8 +12,12 @@ const Button = ({onClick, buttonText}) =>{
 
 const Display = ({displayText, displayValue}) =>{
   return (
-    <p>{displayText} {displayValue}</p>) 
-}
+          <tr>
+            <td>{displayText}</td>
+            <td>{displayValue}</td>
+          </tr>
+      )  
+ }
 
 const Title = ({text}) => <h1>{text}</h1>
 
@@ -29,12 +33,16 @@ const Statistics = ({good, neutral, bad}) => {
     return (
       <div>
         <Title text ='statistics'/>
-        <Display displayText= 'good'  displayValue ={good}/>
-        <Display displayText= 'neutral'  displayValue ={neutral}/>
-        <Display displayText= 'bad' displayValue={bad}/>
-        <Display displayText= 'all' displayValue={good + neutral + bad}/>
-        <Display displayText= 'average' displayValue={(good - bad)/(good + neutral + bad)}/>
-        <Display displayText= 'positive' displayValue={good/(good + neutral + bad)*100 + '%'}/>
+        <table>
+          <tbody>
+            <Display displayText= 'good'  displayValue ={good}/>
+            <Display displayText= 'neutral'  displayValue ={neutral}/>
+            <Display displayText= 'bad' displayValue={bad}/>
+            <Display displayText= 'all' displayValue={good + neutral + bad}/>
+            <Display displayText= 'average' displayValue={(good - bad)/(good + neutral + bad)}/>
+            <Display displayText= 'positive' displayValue={good/(good + neutral + bad)*100 + '%'}/>
+          </tbody>
+        </table>
       </div>
 
 
