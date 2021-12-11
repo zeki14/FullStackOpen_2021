@@ -17,17 +17,25 @@ const Display = ({displayText, displayValue}) =>{
 
 const Title = ({text}) => <h1>{text}</h1>
 
-const Statistics = (props) => {
-  return (
-    <div>
-      <Title text ='statistics'/>
-      <Display displayText= 'good'  displayValue ={props.good}/>
-      <Display displayText= 'neutral'  displayValue ={props.neutral}/>
-      <Display displayText= 'bad' displayValue={props.bad}/>
-      <Display displayText= 'all' displayValue={props.good + props.neutral + props.bad}/>
-      <Display displayText= 'average' displayValue={(props.good - props.bad)/(props.good + props.neutral +props. bad)}/>
-      <Display displayText= 'positive' displayValue={props.good/(props.good + props.neutral + props.bad)*100 + '%'}/>
-    </div>
+const Statistics = ({good, neutral, bad}) => {
+  
+  if(good ===0 && neutral===0 && bad=== 0){
+    return (
+      <div> 
+        No feedback given
+      </div>
+      )
+    }
+    return (
+      <div>
+        <Title text ='statistics'/>
+        <Display displayText= 'good'  displayValue ={good}/>
+        <Display displayText= 'neutral'  displayValue ={neutral}/>
+        <Display displayText= 'bad' displayValue={bad}/>
+        <Display displayText= 'all' displayValue={good + neutral + bad}/>
+        <Display displayText= 'average' displayValue={(good - bad)/(good + neutral + bad)}/>
+        <Display displayText= 'positive' displayValue={good/(good + neutral + bad)*100 + '%'}/>
+      </div>
 
 
   )
