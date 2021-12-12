@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const Header = ({text}) =>  <h2>{text}</h2>
+
+const Anecdote = ({text, voteCount}) => {
+  return (
+    <div>
+      <h5>{text}</h5>
+      <p>this anecdote has {voteCount} votes </p>
+    </div>
+  )
+}
 
 const Button = ({text, onClick}) => {
     return (
@@ -8,6 +18,22 @@ const Button = ({text, onClick}) => {
                 {text}
             </button>
     )
+}
+
+const Winner = ({points, anecdotes}) => {
+  const winner = anecdotes[(points.indexOf(Math.max(...points)))];
+  console.log(winner)
+  if(Math.max(...points) === 0){
+    return (
+      <p>not votes yet</p>
+    )
+  }
+  return (
+    <div>
+      <p>{winner}</p>
+    </div>
+  )
+
 }
 
 const App = ({anecdotes}) => {
@@ -30,9 +56,13 @@ const App = ({anecdotes}) => {
 
   return (
     <div>
-        <div>{anecdotes[selected]}</div>
+        <Header text = "Anecdote of the day" />
+        <Anecdote text = {anecdotes[selected]} voteCount={points[selected]}/>
         <Button text='vote' onClick ={handleVoteClick}/>
         <Button text='next anecdote' onClick ={handleSelectClick}/>
+        <Header text = "Anecdote with more votes" />
+        <Winner points = {points} anecdotes={anecdotes}/>
+        {/* <p>{anecdotes[(points.indexOf(Math.max(...points)))]}</p> */}
         
     </div>
   )
