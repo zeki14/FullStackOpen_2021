@@ -36,16 +36,19 @@ import React from 'react'
 
     const Total = ({ course }) => {
 
-        const values = course.parts.map(part => {
-            return part.exercises;
-        })
-        let total =0;
-        for(let i =0; i < values.length; i++){
-            total += values[i]
-        }
-        return(
-          <p>Total of exercises {total}</p>
-        ) 
+      const total = course.parts.reduce(function(sum, part){
+          return sum + part.exercises;
+      },0)
+      
+      return(
+        <p>Total of exercises {total}</p>
+      ) 
+      
+        // const values = course.parts.map(part => part.exercises;)
+        // let total =0;
+        // for(let i =0; i < values.length; i++){
+        //     total += values[i]
+        // }
       }
 
 export default Course;
